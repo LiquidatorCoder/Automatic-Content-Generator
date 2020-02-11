@@ -19,3 +19,5 @@
 [] It should then post this image on most social media platforms.
 
 [] Everything should be done remotely and without user interference.
+
+[] Deploy on Heroku.
