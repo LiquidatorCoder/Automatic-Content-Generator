@@ -9,8 +9,8 @@ x=randint(1,9)
 bg_path = f"C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\BG\\{x}.png"
 post = Image.open(bg_path)
 draw = ImageDraw.Draw(post)
-font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-Medium.ttf", 160)
-draw.text((0, 0),"Sample Text",(50,50,50),font=font)
+font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-Medium.ttf", 30)
+draw.text((810, 1020),"@liquiatorcoder",(50,50,50),font=font)
 post.save(f"C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\post.png")
 
 post.show()
