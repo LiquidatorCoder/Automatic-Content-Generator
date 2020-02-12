@@ -36,9 +36,7 @@ for i in quotel:
 quote = quote.replace('“','" ')
 quote = quote.replace('”',' "')
 
-
-print(quote)
-print(auth)
+text = quote + "\n\n" + auth
 x=randint(1,9)
 # path = os.path.abspath('.')
 
@@ -51,12 +49,9 @@ font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Fo
 draw.text((810, 1020),"@liquiatorcoder",(50,50,50),font=font)
 
 font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-Medium.ttf", 70)
-w, h = draw.textsize(quote, font=font)
+w, h = draw.textsize(text, font=font)
 print(w, h)
-draw.text(((W-w)/2,(H-h)/2), quote, (70,70,70), font = font)
-
-# font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-Medium.ttf", 60)
-# draw.text((500, 700),auth,(70,70,70),font=font)
+draw.text(((W-w)/2,(H-h)/2), text, (70,70,70), font = font)
 
 post.save(f"C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\post.png")
 
