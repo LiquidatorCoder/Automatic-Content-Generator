@@ -20,8 +20,6 @@
 
 - [ ] Everything should be done remotely and without user interference.
 
-- [ ] Deploy on Heroku.
-
 ## Demo
 
 ![Demo Post](/post.png)
