@@ -2,22 +2,22 @@
 
 ## Todo List
 
-[*] Fetch a BG.
+- [x] Fetch a BG.
 
-[*] Search for content.
+- [x] Search for content.
 
-[*] Scrape the content.
+- [x] Scrape the content.
 
-[*] Add name tag.
+- [x] Add name tag.
 
-[*] Randomize the content and post a little bit.
+- [x] Randomize the content and post a little bit.
 
-[] Generate a caption.
+- [ ] Generate a caption.
 
-[] Fetch some hashtags and add some of unique hashes.
+- [ ] Fetch some hashtags and add some of unique hashes.
 
-[] It should then post this image on most social media platforms.
+- [ ] It should then post this image on most social media platforms.
 
-[] Everything should be done remotely and without user interference.
+- [ ] Everything should be done remotely and without user interference.
 
-[] Deploy on Heroku.
+- [ ] Deploy on Heroku.
