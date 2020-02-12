@@ -2,15 +2,15 @@
 
 ## Todo List
 
-[] Generate a BG.
+[*] G̶e̶n̶e̶r̶a̶t̶e̶ a̶ B̶G̶. Fetch a BG.
 
-[] Search for content.
+[*] Search for content.
 
-[] Scrape the content.
+[*] Scrape the content.
 
-[] Add logo.
+[*] A̶d̶d̶ l̶o̶g̶o̶.̶  Add name tag.
 
-[] Randomize the content and post a little bit.
+[*] Randomize the content and post a little bit.
 
 [] Generate a caption.
 
