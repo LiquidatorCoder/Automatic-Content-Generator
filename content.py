@@ -38,21 +38,20 @@ quote = quote.replace('”',' "')
 
 text = quote + "\n\n" + auth
 x=randint(1,9)
-# path = os.path.abspath('.')
 
 W, H = (1080,1080)
-bg_path = f"C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\BG\\{x}.png"
+bg_path = os.path.join(os.getcwd(),f"BG\\{x}.png")
 post = Image.open(bg_path)
 draw = ImageDraw.Draw(post)
 
-font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-Medium.ttf", 30)
+font = ImageFont.truetype(os.path.join(os.getcwd(),"Font\\Montserrat-Medium.ttf"), 30)
 draw.text((810, 1020),"@liquiatorcoder",(50,50,50),font=font)
 
-font = ImageFont.truetype("C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\Font\\Montserrat-SemiBoldItalic.ttf", 70)
+font = ImageFont.truetype(os.path.join(os.getcwd(),"Font\\Montserrat-SemiBoldItalic.ttf"), 70)
 w, h = draw.textsize(text, font=font)
-print(w, h)
+
 draw.text(((W-w)/2,(H-h)/2), text, (30,30,30), font = font)
 
-post.save(f"C:\\Users\\Asus\\Desktop\\AutomaticContentCreator\\post.png")
+post.save(os.path.join(os.getcwd(),"Post\\post.png"))
 
 post.show()
