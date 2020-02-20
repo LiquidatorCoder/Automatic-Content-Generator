@@ -5,7 +5,7 @@ from PIL import ImageDraw
 from random import randint
 import sys
 import os
-from instapy_cli import client
+from InstagramAPI import InstagramAPI
 # -----------------------------
 from requests import get
 from json import loads
@@ -74,7 +74,7 @@ font = ImageFont.truetype(
         "Font",
         "Montserrat-Medium.ttf"),
     30)
-draw.text((810, 1020), "@liquiatorcoder", (50, 50, 50), font=font)
+draw.text((810, 1020), "@motivation.py", (50, 50, 50), font=font)
 # -----------------------------
 font = ImageFont.truetype(
     os.path.join(
@@ -90,7 +90,8 @@ post.save(os.path.join(os.getcwd(), "Post", "post.png"))
 username = 'motivation.py'
 password = '30june2000'
 
-image = os.path.join(os.getcwd(), "Post", "post.png")
-cap = '#motivation #motivationbot #getstarted #justdoit'
-with client(username, password) as cli:
-    cli.upload(image, cap)
+InstagramAPI = InstagramAPI("username", "password")
+InstagramAPI.login()
+photo_path = os.path.join(os.getcwd(), "Post", "post.png")
+caption = '#motivation #motivationbot #getstarted #justdoit'
+InstagramAPI.uploadPhoto(photo_path, caption=caption)
