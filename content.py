@@ -147,6 +147,7 @@ browser.find_element_by_xpath("/html/body/div[1]/section/div[1]/header/div/div[2
 n = randint(2,5)
 time.sleep(n)
 caption = text.replace("\n", " ")
+caption = caption + "\n.\n.\n.\n.\n.\n.\n.\n.\n#motivation #getstarted #nevergiveup #dontgiveup #happy #life #goals"
 browser.find_element_by_xpath("//*[@id='react-root']/section/div[2]/section[1]/div[1]/textarea").send_keys(caption)
 n = randint(2,5)
 time.sleep(n)
