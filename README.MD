@@ -12,11 +12,11 @@
 
 - [x] Randomize the content and post a little bit.
 
-- [ ] Generate a caption.
+- [x] Generate a caption.
 
-- [ ] Fetch some hashtags and add some of unique hashes.
+- [x] Fetch some hashtags and add some of unique hashes. (Not adding unique hashtags.)
 
-- [ ] It should then post this image on most social media platforms.
+- [x] It should then post this image on most social media platforms. (Instagram for now.)
 
 - [ ] Everything should be done remotely and without user interference.
 
