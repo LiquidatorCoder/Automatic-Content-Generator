@@ -22,6 +22,8 @@
 
 ## Demo
 
+![Running Script](/working.gif)
+
 ![Demo Post](/post.png)
 
 ![Demo Post 2](/post2.png)
