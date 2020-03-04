@@ -5,7 +5,11 @@ from PIL import ImageDraw
 from random import randint
 import sys
 import os
-from InstagramAPI import InstagramAPI
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import *
+import autoit
 # -----------------------------
 from requests import get
 from json import loads
@@ -87,11 +91,66 @@ draw.text(((W - w) / 2, (H - h) / 2), text, (30, 30, 30), font=font)
 # -----------------------------
 post.save(os.path.join(os.getcwd(), "Post", "post.png"))
 # -----------------------------
+
+options = Options()
+options.add_argument("--log-level=3")
+options.add_argument("--silent")
+#options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-logging")
+options.add_argument("--mute-audio")
+#mobile_emulation = {"deviceName": "Nexus 5"}
+#options.add_experimental_option("mobileEmulation", mobile_emulation)
+options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1')
+
+# -----------------------------
+
+browser = webdriver.Chrome(options=options)
 username = 'motivation.py'
 password = '30june2000'
+browser.get('https://www.instagram.com/accounts/login/')
 
-InstagramAPI = InstagramAPI("username", "password")
-InstagramAPI.login()
-photo_path = os.path.join(os.getcwd(), "Post", "post.png")
-caption = '#motivation #motivationbot #getstarted #justdoit'
-InstagramAPI.uploadPhoto(photo_path, caption=caption)
+n = randint(3,5)
+time.sleep(n)
+usernameInput = browser.find_elements_by_css_selector('form input')[0]
+passwordInput = browser.find_elements_by_css_selector('form input')[1]
+
+usernameInput.send_keys(username)
+passwordInput.send_keys(password)
+passwordInput.send_keys(Keys.ENTER)
+n = randint(3,5)
+time.sleep(n)
+browser.find_element_by_xpath("/html/body/div[1]/section/main/div/button").click()
+n = randint(2,5)
+time.sleep(n)
+browser.find_element_by_xpath("/html/body/div[4]/div/div/div[3]/button[2]").click()
+# while 1:
+#     time.sleep(1)
+#     try:
+#         driver.find_element_by_xpath("/html/body/div[4]/div/div/div[3]/button[2]").click()
+#         break
+#     except:
+#         pass
+n = randint(2,5)
+time.sleep(n)
+browser.find_element_by_xpath("/html/body/div[1]/section/nav[2]/div/div/div[2]/div/div/div[3]").click()
+autoit.win_active("Open") #open can change by your os language if not open change that
+n = randint(2,5)
+time.sleep(n)
+autoit.control_send("Open", "Edit1", os.path.join(os.getcwd(), "Post", "post.png"))
+n = randint(2,5)
+time.sleep(n)
+autoit.control_send("Open", "Edit1", "{ENTER}")
+n = randint(2,5)
+time.sleep(n)
+browser.find_element_by_xpath("/html/body/div[1]/section/div[1]/header/div/div[2]/button").click()
+n = randint(2,5)
+time.sleep(n)
+caption = text.replace("\n", " ")
+browser.find_element_by_xpath("//*[@id='react-root']/section/div[2]/section[1]/div[1]/textarea").send_keys(caption)
+n = randint(2,5)
+time.sleep(n)
+browser.find_element_by_xpath("/html/body/div[1]/section/div[1]/header/div/div[2]/button").click()
+n = randint(5,7)
+time.sleep(n)
+#browser.close()
