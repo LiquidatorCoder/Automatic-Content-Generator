@@ -147,7 +147,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like 
 
 # -----------------------------
 
-browser = webdriver.Chrome(r"C:\Users\aksha\OneDrive\Desktop\Automatic Content\Automatic-Content-Generator\chromedriver.exe",options=options)
+browser = webdriver.Chrome(r"chromedriver.exe",options=options)
 username = 'motivation.py'
 password = '30june2000'
 browser.get('https://www.instagram.com/accounts/login/')
