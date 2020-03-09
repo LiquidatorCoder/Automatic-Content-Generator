@@ -26,4 +26,6 @@
 
 ![Demo Post](/post.png)
 
+![Demo Post 1](/post1.png)
+
 ![Demo Post 2](/post2.png)
