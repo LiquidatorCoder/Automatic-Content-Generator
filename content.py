@@ -10,6 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import *
 import autoit
+import numpy as np
 # -----------------------------
 from requests import get
 from json import loads
@@ -48,6 +49,35 @@ from json import loads
 # quote = quote.replace('”',' "')
 # text = quote + "\n\n" + auth
 # -----------------------------
+# def alpha_composite(src, dst):
+#     '''
+#     Return the alpha composite of src and dst.
+#
+#     Parameters:
+#     src -- PIL RGBA Image object
+#     dst -- PIL RGBA Image object
+#
+#     The algorithm comes from http://en.wikipedia.org/wiki/Alpha_compositing
+#     '''
+#     http://stackoverflow.com/a/3375291/190597
+#     http://stackoverflow.com/a/9166671/190597
+    # src = np.asarray(src)
+    # dst = np.asarray(dst)
+    # out = np.empty(src.shape, dtype = 'float')
+    # alpha = np.index_exp[:, :, 3:]
+    # rgb = np.index_exp[:, :, :3]
+    # src_a = src[alpha]/255.0
+    # dst_a = dst[alpha]/255.0
+    # out[alpha] = src_a+dst_a*(1-src_a)
+    # old_setting = np.seterr(invalid = 'ignore')
+    # out[rgb] = (src[rgb]*src_a + dst[rgb]*dst_a*(1-src_a))/out[alpha]
+    # np.seterr(**old_setting)
+    # out[alpha] *= 255
+    # np.clip(out,0,255)
+    # astype('uint8') maps np.nan (and np.inf) to 0
+    # out = out.astype('uint8')
+    # out = Image.fromarray(out, 'RGBA')
+    # return out
 response = get(
     'http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
 while len(loads(response.text)) > 10 or len(loads(response.text)) == 0:
@@ -66,25 +96,42 @@ for i in text1:
         text = text + i + " "
 text = text.replace("  ", "\n")
 # -----------------------------
-x = randint(1, 9)
+x1 = randint(1, 9)
 W, H = (1080, 1080)
-bg_path = os.path.join(os.getcwd(), "BG", f"{x}.png")
-post = Image.open(bg_path)
+bg_path1 = os.path.join(os.getcwd(), "BG", f"{x1}.png")
+x2 = randint(1, 9)
+W, H = (1080, 1080)
+bg_path2 = os.path.join(os.getcwd(), "BG", f"{x2}.png")
+im1 = Image.open(bg_path1).convert("RGBA")
+im2 = Image.open(bg_path2).convert("RGBA")
+alpha = randint(0,10)/10
+post = Image.blend(im1, im2, alpha)
+# re, gr, bl, al = post.split()
+# imagelist = [re, gr, bl, post]
+# imagerand = randint(1,1)
+# post = imagelist[imagerand]
+post = post.convert("RGBA")
 draw = ImageDraw.Draw(post)
 # -----------------------------
+fontlist = ["Montserrat-Black.ttf","Montserrat-BlackItalic.ttf","Montserrat-Bold.ttf","Montserrat-BoldItalic.ttf","Montserrat-ExtraBold.ttf","Montserrat-ExtraBoldItalic.ttf","Montserrat-ExtraLight.ttf","Montserrat-ExtraLightItalic.ttf","Montserrat-Italic.ttf","Montserrat-Light.ttf","Montserrat-LightItalic.ttf","Montserrat-Medium.ttf","Montserrat-MediumItalic.ttf","Montserrat-Regular.ttf","Montserrat-SemiBold.ttf","Montserrat-SemiBoldItalic.ttf","Montserrat-Thin.ttf","Montserrat-ThinItalic.ttf"]
+fontnumber = randint(0,17)
+fontname = fontlist[fontnumber]
 font = ImageFont.truetype(
     os.path.join(
         os.getcwd(),
         "Font",
-        "Montserrat-Medium.ttf"),
+        fontname),
     30)
-draw.text((810, 1020), "@motivation.py", (50, 50, 50), font=font)
+str = input("Enter the signing name with @ : ")
+draw.text((760, 1000), str, (50, 50, 50), font=font)
 # -----------------------------
+fontnumber2 = randint(0,17)
+fontname2 = fontlist[fontnumber2]
 font = ImageFont.truetype(
     os.path.join(
         os.getcwd(),
         "Font",
-        "Montserrat-SemiBoldItalic.ttf"),
+        fontname2),
     70)
 w, h = draw.textsize(text, font=font)
 draw.text(((W - w) / 2, (H - h) / 2), text, (30, 30, 30), font=font)
@@ -105,7 +152,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like 
 
 # -----------------------------
 
-browser = webdriver.Chrome(options=options)
+browser = webdriver.Chrome(r"chromedriver.exe",options=options)
 username = 'motivation.py'
 password = '30june2000'
 browser.get('https://www.instagram.com/accounts/login/')
